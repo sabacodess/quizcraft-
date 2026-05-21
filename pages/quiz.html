@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QuizCraft | Quiz</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../css/quiz.css?v=1777760600" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23fbbf24'/><text x='50' y='72' font-size='65' font-family='Poppins,sans-serif' font-weight='700' text-anchor='middle' fill='%230f172a'>Q</text></svg>"
+    />
+  </head>
+  <body>
+    <div class="quiz-wrapper">
+      <!-- RESUME MODAL -->
+      <div id="resumeModal" class="qc-modal-backdrop" style="display: none">
+        <div class="qc-modal">
+          <div class="qc-modal-icon">
+            <i class="fa-solid fa-rotate-right"></i>
+          </div>
+          <h2 class="qc-modal-title">Unfinished Attempt Found</h2>
+          <p class="qc-modal-body">
+            You were on <strong id="modalQNum">Question 1</strong> of this
+            quiz.<br />
+            Would you like to pick up where you left off?
+          </p>
+          <div class="qc-modal-actions">
+            <button class="qc-btn-secondary" onclick="restartQuiz()">
+              <i class="fa-solid fa-arrow-rotate-left"></i> Start Fresh
+            </button>
+            <button class="qc-btn-primary" onclick="resumeQuiz()">
+              <i class="fa-solid fa-play"></i> Resume
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- LOADING -->
+      <div id="quizLoading">
+        <div class="loader-card">
+          <div class="spinner"></div>
+          <h3>Creating your quiz...</h3>
+          <p>Analyzing your PDF...</p>
+        </div>
+      </div>
+
+      <!-- QUIZ -->
+      <div class="quiz-layout" style="display: none">
+        <div class="quiz-main">
+          <div class="quiz-header">
+            <div class="left">
+              <h2>QuizCraft</h2>
+              <p class="quiz-title">Quiz</p>
+            </div>
+            <div class="right">
+              <span class="timer" id="timerDisplay">⏱ 30s</span>
+            </div>
+          </div>
+
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+
+          <div class="question-box">
+            <p class="q-count">Question 1 of 10</p>
+            <h3 id="questionText">Question here</h3>
+          </div>
+
+          <div id="optionsContainer" class="options"></div>
+
+          <div class="quiz-actions">
+            <button onclick="prevQuestion()">Previous</button>
+            <button id="nextBtn" onclick="nextQuestion()" disabled>Next</button>
+          </div>
+        </div>
+
+        <!-- RIGHT PALETTE -->
+        <div class="quiz-palette" id="palette"></div>
+      </div>
+
+      <!-- RESULT PAGE — Compact Single-View -->
+      <div id="resultPage" style="display: none">
+        <div class="result-card">
+          <!-- Header -->
+          <div class="result-header">
+            <div class="result-header-left">
+              <h2 class="result-brand">QuizCraft</h2>
+              <p class="result-subtitle">Performance Summary</p>
+            </div>
+            <span
+              id="categoryBadge"
+              class="category-badge"
+              style="display: none"
+            ></span>
+          </div>
+
+          <!-- Top Row: Score Circle + Time & Message -->
+          <div class="score-section">
+            <div class="circle-wrapper">
+              <svg class="progress-ring" viewBox="0 0 120 120">
+                <circle class="ring-bg" cx="60" cy="60" r="50" />
+                <circle
+                  class="ring-fill"
+                  id="ringFill"
+                  cx="60"
+                  cy="60"
+                  r="50"
+                />
+              </svg>
+              <div class="circle-label">
+                <span id="scorePercent">0%</span>
+                <small id="scoreText">0 / 10</small>
+              </div>
+            </div>
+            <div class="score-info">
+              <p id="scoreMessage" class="score-message"></p>
+              <div class="time-inline">
+                <span class="time-icon">⏱</span>
+                <span id="timeTaken" class="time-value">0s</span>
+                <span class="time-label">time taken</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Middle Row: 3 Stat Cards -->
+          <div class="stat-cards">
+            <div class="stat-card correct-card">
+              <div class="stat-icon">✅</div>
+              <div class="stat-value" id="correctCount">0</div>
+              <div class="stat-label">Correct</div>
+            </div>
+            <div class="stat-card wrong-card">
+              <div class="stat-icon">❌</div>
+              <div class="stat-value" id="wrongCount">0</div>
+              <div class="stat-label">Wrong</div>
+            </div>
+            <div class="stat-card xp-card">
+              <div class="stat-icon">⚡</div>
+              <div class="stat-value xp-glow" id="xpEarned">+0 XP</div>
+              <div class="stat-label">XP Earned</div>
+            </div>
+          </div>
+
+          <!-- Focus Topics (scrollable, flex-1) -->
+          <div id="focusArea"></div>
+
+          <!-- Action Buttons -->
+          <div class="result-buttons">
+            <button class="btn-retry" onclick="location.reload()">
+              Retry Quiz
+            </button>
+            <button
+              class="btn-dashboard"
+              onclick="
+                window.location.href = '../pages/dashboard.html?t=' + Date.now()
+              "
+            >
+              Dashboard
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/quiz.js?v=1777760600"></script>
+  </body>
+</html>

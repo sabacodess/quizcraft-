@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QuizCraft</title>
+    <link rel="stylesheet" href="css/landing.css" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23fbbf24'/><text x='50' y='72' font-size='65' font-family='Inter,sans-serif' font-weight='800' text-anchor='middle' fill='%230a0f1e'>Q</text></svg>"
+    />
+  </head>
+  <body>
+    <!-- NAV -->
+    <header>
+      <div class="section-navbar">
+        <div class="nav-container">
+          <div class="logo">
+            <h1>
+              <a href="index.html">QuizCraft</a>
+            </h1>
+          </div>
+          <nav class="navbar">
+            <ul>
+              <li class="nav-item">
+                <a class="nav-link login-btn" href="pages/login.html"
+                  >Sign In</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link register-btn" href="pages/login.html#signup"
+                  >Sign Up For Free</a
+                >
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <div class="section-hero">
+        <!-- Ambient gradient blobs -->
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+
+        <div class="container grid grid-cols--2">
+          <div class="section-hero-content">
+            <p class="hero-subheading">
+              Upload your PDF. Get 10 quiz questions in 10 seconds.
+            </p>
+            <h1 class="hero-heading">
+              Turn Any PDFs Into<br />
+              <span>Smart Quizzes &amp;<br />Summaries</span>
+              That Help You Learn Faster
+            </h1>
+            <p class="hero-para">
+              Turn your PDFs into quizzes, track progress, and focus only on
+              what matters.
+            </p>
+            <a href="pages/login.html#signup" class="btn-primary">
+              Try QuizCraft Now
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
+            <div class="mobile-auth">
+              <a href="pages/login.html" class="login-btn">Sign In</a>
+              <a href="pages/login.html#signup" class="register-btn">Sign Up</a>
+            </div>
+          </div>
+          <div class="hero-right">
+            <img
+              src="Assets/quizzcraft-preview1.png"
+              alt="QuizCraft quiz interface"
+              class="hero-img"
+            />
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- WHY SECTION -->
+    <section class="section-why">
+      <div class="container">
+        <h2 class="section-title">Why QuizCraft Works Better</h2>
+        <div class="grid grid-columns-3 whycards">
+          <div class="whycard reveal">
+            <div class="whycard-icon">
+              <!-- Brain / AI icon -->
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.46 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 4.44-1.14Z"
+                />
+                <path
+                  d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.46 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-4.44-1.14Z"
+                />
+              </svg>
+            </div>
+            <h3>AI-Powered Processing</h3>
+            <p>
+              Uses AI to analyze document content and create meaningful
+              multiple-choice questions automatically.
+            </p>
+          </div>
+
+          <div class="whycard reveal">
+            <div class="whycard-icon">
+              <!-- Lightning bolt / speed icon -->
+              <svg viewBox="0 0 24 24">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+              </svg>
+            </div>
+            <h3>Saves Time</h3>
+            <p>
+              Automatically generates quizzes and summaries from uploaded PDFs,
+              drastically reducing manual study prep.
+            </p>
+          </div>
+
+          <div class="whycard reveal">
+            <div class="whycard-icon">
+              <!-- Chart / analytics icon -->
+              <svg viewBox="0 0 24 24">
+                <line x1="18" y1="20" x2="18" y2="10" />
+                <line x1="12" y1="20" x2="12" y2="4" />
+                <line x1="6" y1="20" x2="6" y2="14" />
+                <line x1="2" y1="20" x2="22" y2="20" />
+              </svg>
+            </div>
+            <h3>Instant Evaluation</h3>
+            <p>
+              Provides quick quiz results to help you assess your understanding
+              and pinpoint weak areas instantly.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW SECTION -->
+    <section class="how-section">
+      <div class="container">
+        <h2 class="section-title">How QuizCraft Works</h2>
+        <div class="grid grid-columns-4 how-section-content">
+          <div class="step reveal">
+            <div class="step-number">
+              <img src="Assets/pdf1.png" alt="pdf" />
+            </div>
+            <div class="content">
+              <p>Upload your notes (PDF).</p>
+            </div>
+          </div>
+          <div class="step reveal">
+            <div class="step-number">
+              <img src="Assets/AI-1.png" alt="ai" />
+            </div>
+            <div class="content">
+              <p>AI analyzes key concepts.</p>
+            </div>
+          </div>
+          <div class="step reveal">
+            <div class="step-number">
+              <img src="Assets/quiz.png" alt="quiz" />
+            </div>
+            <div class="content">
+              <p>Generate quizzes &amp; summaries.</p>
+            </div>
+          </div>
+          <div class="step reveal">
+            <div class="step-number">
+              <img src="Assets/result.png" alt="results" />
+            </div>
+            <div class="content">
+              <p>Practice and track progress.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHO SECTION -->
+    <section class="section-usecase">
+      <div class="container">
+        <h2 class="section-title">Who Is QuizCraft For?</h2>
+        <p class="section-subtitle">
+          Designed for anyone who learns better by testing.
+        </p>
+
+        <div class="usecase-container">
+          <div class="usecase">
+            <div class="usecase-icon">
+              <!-- Graduation cap -->
+              <svg viewBox="0 0 24 24">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+                <path d="M6 12v5c3 3 9 3 12 0v-5" />
+              </svg>
+            </div>
+            <div>
+              <h3>Students</h3>
+              <p>Revise faster before exams with smart quizzes.</p>
+            </div>
+          </div>
+
+          <div class="usecase">
+            <div class="usecase-icon">
+              <!-- Book open -->
+              <svg viewBox="0 0 24 24">
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+              </svg>
+            </div>
+            <div>
+              <h3>Competitive Exams</h3>
+              <p>Turn large notes into quick MCQ practice.</p>
+            </div>
+          </div>
+
+          <div class="usecase">
+            <div class="usecase-icon">
+              <!-- Target / self-study -->
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10" />
+                <circle cx="12" cy="12" r="6" />
+                <circle cx="12" cy="12" r="2" />
+              </svg>
+            </div>
+            <div>
+              <h3>Self Study</h3>
+              <p>Stay consistent with daily testing and tracking.</p>
+            </div>
+          </div>
+
+          <div class="usecase">
+            <div class="usecase-icon">
+              <!-- Zap / quick revision -->
+              <svg viewBox="0 0 24 24">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+              </svg>
+            </div>
+            <div>
+              <h3>Quick Revision</h3>
+              <p>Convert notes into instant revision quizzes.</p>
+            </div>
+          </div>
+        </div>
+
+        <p class="note">
+          Works best with clear text-based notes and PDFs for accurate results.
+        </p>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-brand">
+          <h2>QuizCraft</h2>
+          <p class="tagline">AI-powered learning</p>
+          <p>
+            Turn your notes into smart quizzes and summaries to learn faster and
+            retain more.
+          </p>
+        </div>
+        <div class="footer-column">
+          <h3>Product</h3>
+          <ul>
+            <li><a href="#">Generate Quiz</a></li>
+            <li><a href="#">Summaries</a></li>
+            <li><a href="#">Progress Tracking</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Support</h3>
+          <ul>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Help</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Legal</h3>
+          <ul>
+            <li><a href="#">Terms</a></li>
+            <li><a href="#">Privacy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 QuizCraft. All rights reserved.</p>
+        <p class="footer-note">Works best with text-based notes and PDFs.</p>
+      </div>
+    </footer>
+
+    <script src="./js/landing.js"></script>
+  </body>
+</html>

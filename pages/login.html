@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QuizCraft | Login</title>
+    <link rel="stylesheet" href="../css/auth.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23fbbf24'/><text x='50' y='72' font-size='65' font-family='Poppins,sans-serif' font-weight='700' text-anchor='middle' fill='%230f172a'>Q</text></svg>"
+    />
+  </head>
+  <body>
+    <div class="container" id="container">
+      <!-- SIGN UP PANEL -->
+      <div class="form-container sign-up" id="sign-up">
+        <form>
+          <div class="logo-white-bg">QuizCraft</div>
+          <h1>Create Account</h1>
+          <div class="input-group">
+            <input
+              type="text"
+              id="signupUsername"
+              placeholder="Username"
+              autocomplete="username"
+            />
+            <i class="fa-solid fa-user"></i>
+            <small class="error-message"></small>
+          </div>
+          <div class="input-group">
+            <input
+              type="email"
+              id="signupEmail"
+              placeholder="Email"
+              autocomplete="email"
+            />
+            <i class="fa-solid fa-envelope"></i>
+            <small class="error-message"></small>
+          </div>
+          <div class="input-group">
+            <input
+              type="password"
+              id="signupPassword"
+              placeholder="Password"
+              class="password-input"
+              autocomplete="new-password"
+            />
+            <i class="fa-solid fa-eye-slash togglePassword"></i>
+            <small class="error-message"></small>
+          </div>
+          <button type="button" id="signupbtn" class="main-btn">Sign Up</button>
+          <p class="success-message"></p>
+          <p class="switch-text">
+            Already have an account? <span id="mobileLogin">Sign In</span>
+          </p>
+        </form>
+      </div>
+
+      <!-- SIGN IN PANEL -->
+      <div class="form-container sign-in">
+        <form>
+          <div class="logo-white-bg">QuizCraft</div>
+          <h1>Sign In</h1>
+          <div class="input-group">
+            <input
+              type="email"
+              id="signinEmail"
+              placeholder="Email"
+              autocomplete="email"
+            />
+            <i class="fa-solid fa-envelope"></i>
+            <small class="error-message"></small>
+          </div>
+          <div class="input-group">
+            <input
+              type="password"
+              id="signinPassword"
+              placeholder="Password"
+              class="password-input"
+              autocomplete="current-password"
+            />
+            <i class="fa-solid fa-eye-slash togglePassword"></i>
+            <small class="error-message"></small>
+          </div>
+          <a href="#" class="forget">Forgot Password?</a>
+          <button type="button" id="signinbtn" class="main-btn">Sign In</button>
+          <p class="success-message"></p>
+          <p class="switch-text">
+            Don't have an account? <span id="mobileRegister">Sign Up</span>
+          </p>
+        </form>
+      </div>
+
+      <!-- SLIDING TOGGLE PANEL -->
+      <div class="toggle-container">
+        <div class="toggle">
+          <!-- LEFT panel (shown when active = sign-up mode, prompting sign-in) -->
+          <div class="toggle-panel toggle-left">
+            <img src="../Assets/authImg.png" alt="auth image" class="bg-img" />
+            <div class="overlay-content">
+              <div class="logo-blue-bg">QuizCraft</div>
+              <h1>Welcome Back!</h1>
+              <button class="ghost-btn" id="loginBtn">Sign In</button>
+            </div>
+          </div>
+
+          <!-- RIGHT panel (shown by default, prompting sign-up) -->
+          <div class="toggle-panel toggle-right">
+            <img src="../Assets/authImg.png" alt="auth image" class="bg-img" />
+            <div class="overlay-content">
+              <div class="logo-blue-bg">QuizCraft</div>
+              <h1>Hello, Quizzer!</h1>
+              <button class="ghost-btn" id="registerBtn">Sign Up</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/auth.js"></script>
+  </body>
+</html>

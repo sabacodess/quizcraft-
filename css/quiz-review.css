@@ -1,0 +1,157 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(135deg, #eef2ff, #f8fafc);
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+}
+
+.summary-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+.top-nav {
+  width: 100%;
+  max-width: 720px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.top-nav button {
+  background: transparent;
+  border: none;
+  color: #64748b;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+}
+
+.top-nav button:hover {
+  color: #0f172a;
+}
+
+#loadingBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px;
+}
+
+.loader-card {
+  text-align: center;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #e5e7eb;
+  border-top: 4px solid #eab308;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto 16px;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#reviewResult {
+  width: 100%;
+  max-width: 720px;
+}
+
+.result-card {
+  background: white;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.result-card h2 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 16px;
+}
+
+button {
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+@media (max-width: 768px) {
+  .summary-wrapper {
+    padding: 12px;
+  }
+
+  .top-nav {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  #reviewResult {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .result-card {
+    padding: 20px 16px;
+    border-radius: 14px;
+  }
+
+  .result-card h2 {
+    font-size: 18px;
+  }
+
+  /* Score + accuracy row */
+  #reviewResult > div > div[style] {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  /* Download + Dashboard buttons */
+  .result-card > div[style*="display: flex"] {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .result-card > div[style*="display: flex"] button {
+    width: 100%;
+    flex: none !important;
+  }
+
+  /* Review questions */
+  #reviewSection > div {
+    padding: 12px !important;
+    border-radius: 10px !important;
+  }
+
+  #reviewSection p {
+    font-size: 14px !important;
+  }
+
+  #reviewSection > div > div {
+    font-size: 13px !important;
+    padding: 6px 10px !important;
+  }
+}

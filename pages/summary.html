@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QuizCraft | Summary</title>
+    <link rel="stylesheet" href="../css/summary.css?v=1777757980" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23fbbf24'/><text x='50' y='72' font-size='65' font-family='Poppins,sans-serif' font-weight='700' text-anchor='middle' fill='%230f172a'>Q</text></svg>"
+    />
+  </head>
+  <body>
+    <!-- ============ SETUP ============ -->
+    <div class="summary-setup-page">
+      <div class="summary-setup">
+        <div class="summary-header">
+          <h2>QuizCraft</h2>
+          <p>Summary Generator</p>
+        </div>
+        <p class="setup-hint">Generate summary from your PDF</p>
+
+        <div class="field">
+          <label>Page Range</label>
+          <div class="range">
+            <input type="number" placeholder="From" id="fromPage" />
+            <input type="number" placeholder="To" id="toPage" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Summary Type</label>
+          <select id="summaryType">
+            <option>Short</option>
+            <option>Detailed</option>
+            <option>Bullet Points</option>
+          </select>
+        </div>
+
+        <button id="generateSummary">Generate Summary</button>
+      </div>
+    </div>
+
+    <!-- ============ LOADING (fullscreen overlay) ============ -->
+    <div id="loadingBox">
+      <div class="loader-card">
+        <div class="spinner"></div>
+        <h3>Analyzing your PDF...</h3>
+        <p>Extracting key points...</p>
+      </div>
+    </div>
+
+    <!-- ============ RESULT — Two-Column Single View ============ -->
+    <div id="summaryResult" class="hidden">
+      <div class="result-body">
+        <!-- hidden -->
+        <ul id="keyTakeaways" class="hidden"></ul>
+
+        <!-- SUMMARY CARD -->
+        <div class="summary-full-card">
+          <!-- HEADER -->
+          <div class="summary-reading-header">
+            <h1 class="summary-brand-title">QuizCraft</h1>
+
+            <p id="summaryFilenameDisplay" class="summary-pdf-name"></p>
+
+            <div class="summary-mini-meta">
+              <span class="glass-label"> Full Summary </span>
+
+              <span id="summaryTypeLabel" class="summary-type-badge"></span>
+            </div>
+          </div>
+
+          <!-- SUMMARY TEXT -->
+          <div class="summary-content" id="summaryText"></div>
+
+          <!-- BUTTONS -->
+          <div class="summary-bottom-actions">
+            <button class="btn-action copy-btn" id="copyBtn">
+              Copy Summary
+            </button>
+
+            <button class="btn-action download-btn" id="downloadBtn">
+              Download
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/summary.js?v=1777757980"></script>
+  </body>
+</html>

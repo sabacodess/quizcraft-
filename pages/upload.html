@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QuizCraft | Upload</title>
+    <link rel="stylesheet" href="../css/upload.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23fbbf24'/><text x='50' y='72' font-size='65' font-family='Poppins,sans-serif' font-weight='700' text-anchor='middle' fill='%230f172a'>Q</text></svg>"
+    />
+  </head>
+  <body>
+    <div class="uploadWapper">
+      <div id="uploadPage" class="page upload-container">
+        <div class="workspace-header">
+          <div>
+            <h2>QuizCraft</h2>
+            <p>Upload your PDF and start learning smarter</p>
+          </div>
+        </div>
+        <div class="upload-box" id="uploadBox">
+          <div class="upload-content">
+            <i class="fa-solid fa-file-pdf upload-icon"></i>
+            <button id="addFileBtn" class="upload-btn">Choose Files</button>
+            <p>or drop files here</p>
+            <input type="file" id="pdfInput" accept=".pdf" hidden />
+          </div>
+        </div>
+        <div class="category-selector">
+          <label class="category-label" for="categorySelect"
+            >Select Category</label
+          >
+          <select id="categorySelect" class="category-dropdown">
+            <option value="uncategorized">Uncategorized</option>
+            <option value="University">University</option>
+            <option value="Personal">Personal</option>
+          </select>
+        </div>
+        <div class="action-buttons">
+          <button id="quizBtn">Generate Quiz</button>
+          <button id="summaryBtn">Generate Summary</button>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <script src="../js/upload.js"></script>
+  </body>
+</html>

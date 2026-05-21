@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QuizCraft | QuizReview</title>
+    <!-- <link rel="stylesheet" href="../css/summary.css" /> -->
+    <link rel="stylesheet" href="../css/quiz-review.css" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23fbbf24'/><text x='50' y='72' font-size='65' font-family='Poppins,sans-serif' font-weight='700' text-anchor='middle' fill='%230f172a'>Q</text></svg>"
+    />
+  </head>
+  <body>
+    <div class="summary-wrapper">
+      <div class="top-nav">
+        <button id="back-btn">← Back</button>
+      </div>
+
+      <div
+        id="loadingBox"
+        style="
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          min-height: 200px;
+        "
+      >
+        <div class="loader-card">
+          <div class="spinner"></div>
+          <h3>Loading quiz...</h3>
+        </div>
+      </div>
+
+      <div
+        id="reviewResult"
+        style="display: none; width: 100%; max-width: 720px"
+      >
+        <div class="result-card">
+          <h2>QuizCraft</h2>
+          <h2 id="quizTitle">Quiz Review</h2>
+          <div
+            style="
+              display: flex;
+              gap: 16px;
+              margin: 16px 0;
+              justify-content: center;
+            "
+          >
+            <div
+              style="
+                background: #f8fafc;
+                padding: 12px 20px;
+                border-radius: 12px;
+                text-align: center;
+              "
+            >
+              <p style="font-size: 13px; color: #64748b">Score</p>
+              <h3 id="scoreText" style="color: #eab308"></h3>
+            </div>
+            <div
+              style="
+                background: #f8fafc;
+                padding: 12px 20px;
+                border-radius: 12px;
+                text-align: center;
+              "
+            >
+              <p style="font-size: 13px; color: #64748b">Accuracy</p>
+              <h3 id="accuracyText" style="color: #eab308"></h3>
+            </div>
+          </div>
+
+          <div id="focusArea" style="margin-bottom: 16px"></div>
+          <div id="reviewSection"></div>
+
+          <div style="display: flex; gap: 10px; margin-top: 20px">
+            <button
+              id="downloadBtn"
+              style="background: #e2e8f0; color: #0f172a; flex: 1"
+            >
+              Download Review
+            </button>
+            <button
+              onclick="window.location.href = '../pages/dashboard.html'"
+              style="background: #0f172a; color: white; flex: 1"
+            >
+              Dashboard
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/quiz-review.js"></script>
+  </body>
+</html>

@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QuizCraft | Dashboard</title>
+    <link rel="stylesheet" href="../css/dashbaord.css?v=1777760600" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23fbbf24'/><text x='50' y='72' font-size='65' font-family='Poppins,sans-serif' font-weight='700' text-anchor='middle' fill='%230f172a'>Q</text></svg>"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- ===== SIDEBAR ===== -->
+      <aside>
+        <div class="top">
+          <div class="logo">
+            <h1>QuizCraft</h1>
+          </div>
+          <div class="close" id="close-btn">
+            <i class="fa-solid fa-xmark"></i>
+          </div>
+        </div>
+
+        <div class="sidebar">
+          <a href="#" id="navDashboard" class="active">
+            <i class="fa-solid fa-table-columns"></i>
+            <h3>Dashboard</h3>
+          </a>
+          <a href="#" id="navPDF">
+            <i class="fa-solid fa-file"></i>
+            <h3>My PDFs</h3>
+          </a>
+          <!-- Folders sub-section (shown only on My PDFs page) -->
+          <div class="folders-section" id="foldersSection">
+            <p class="folders-label">Folders</p>
+            <a href="#" class="folder-item active" data-folder="all">
+              <i class="fa-solid fa-folder-open"></i>
+              <h3>All</h3>
+            </a>
+            <a href="#" class="folder-item" data-folder="University">
+              <i class="fa-solid fa-folder"></i>
+              <h3>University</h3>
+            </a>
+            <a href="#" class="folder-item" data-folder="Personal">
+              <i class="fa-solid fa-folder"></i>
+              <h3>Personal</h3>
+            </a>
+          </div>
+          <a href="#" id="navQuizSummary">
+            <i class="fa-solid fa-brain"></i>
+            <h3>Quizzes & Summaries</h3>
+          </a>
+          <a href="#" id="navProfile">
+            <i class="fa-regular fa-user"></i>
+            <h3>Profile</h3>
+          </a>
+          <a href="#" id="logoutBtn" class="logout-link">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <h3>Logout</h3>
+          </a>
+        </div>
+      </aside>
+
+      <!-- ===== MAIN ===== -->
+      <main>
+        <div class="mobile-topbar">
+          <button
+            id="menuBtn"
+            onclick="document.querySelector('aside').classList.toggle('open')"
+          >
+            ☰
+          </button>
+          <h2 style="color: #eab308">QuizCraft</h2>
+        </div>
+        <!-- ===== DASHBOARD PAGE ===== -->
+        <div id="dashboardPage" class="page">
+          <div class="dashboard-header">
+            <div class="greeting">
+              <h1 id="greetingText">Hello, Saba</h1>
+              <p>Here's your QuizCraft workspace</p>
+              <p class="insight">You're improving! Keep going 🔥</p>
+            </div>
+            <button
+              class="upload-main-btn"
+              onclick="window.location.href = 'upload.html'"
+            >
+              + Upload PDF
+            </button>
+          </div>
+
+          <!-- ===== RESUME UNFINISHED QUIZ BANNER ===== -->
+          <div id="resumeCard" class="resume-card" style="display: none">
+            <div class="resume-card-icon">
+              <i class="fa-solid fa-rotate-right"></i>
+            </div>
+            <div class="resume-card-body">
+              <h4>Ready to continue where you left off?</h4>
+              <p>
+                You were on
+                <strong id="resumeQNum">Question 3 of 10</strong> &mdash;
+                <em id="resumeQuizTitle">Quiz</em>
+              </p>
+            </div>
+            <div class="resume-card-actions">
+              <a id="resumeBtn" href="#" class="resume-btn">
+                <i class="fa-solid fa-play"></i> Resume Now
+              </a>
+              <button id="resumeDiscardBtn" class="resume-discard">
+                Discard
+              </button>
+            </div>
+          </div>
+
+          <!-- stat cards -->
+          <div class="cards">
+            <div class="card">
+              <div class="card-icon pdf">
+                <i class="fa-regular fa-file-pdf"></i>
+              </div>
+              <div class="card-info">
+                <h3>Total PDFs</h3>
+                <h2 id="totalPDFs">0</h2>
+                <p>Uploaded documents</p>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-icon quiz">
+                <i class="fa-solid fa-square-poll-horizontal"></i>
+              </div>
+              <div class="card-info">
+                <h3>Total Quizzes</h3>
+                <h2 id="totalQuizzes">0</h2>
+                <p>Generated quizzes</p>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-icon quiz">
+                <i class="fa-solid fa-square-poll-horizontal"></i>
+              </div>
+              <div class="card-info">
+                <h3>Total Summaries</h3>
+                <h2 id="totalSummaries">0</h2>
+                <p>Generated summaries</p>
+              </div>
+            </div>
+          </div>
+          <div class="action-cards">
+            <!-- QUIZ -->
+            <div class="action-card" onclick="goToQuizFromDashboard()">
+              <div class="action-card-body">
+                <div class="icon">
+                  <i class="fa-solid fa-brain"></i>
+                </div>
+                <div class="content">
+                  <h2>Generate Quiz</h2>
+                  <p>Create quizzes instantly from your PDFs</p>
+                </div>
+              </div>
+              <span class="action-card-link">Get Started &rarr;</span>
+            </div>
+
+            <!-- SUMMARY -->
+            <div class="action-card" onclick="goToSummaryFromDashboard()">
+              <div class="action-card-body">
+                <div class="icon">
+                  <i class="fa-solid fa-file-lines"></i>
+                </div>
+                <div class="content">
+                  <h2>Generate Summary</h2>
+                  <p>Turn PDFs into quick revision notes</p>
+                </div>
+              </div>
+              <span class="action-card-link">Get Started &rarr;</span>
+            </div>
+          </div>
+
+          <!-- recent activity table -->
+          <section class="recent-quizzes">
+            <div class="section-header">
+              <h2>Your Learning Activity</h2>
+              <a href="#">View All</a>
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <th>PDF Name</th>
+                  <th>Questions</th>
+                  <th>Score</th>
+                  <th>Accuracy</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Android</td>
+                  <td>10</td>
+                  <td>8/10</td>
+                  <td><span class="accuracy medium">60%</span></td>
+                  <td>12 May</td>
+                </tr>
+                <tr>
+                  <td>Cfn</td>
+                  <td>15</td>
+                  <td>11/15</td>
+                  <td><span class="accuracy high">70%</span></td>
+                  <td>11 May</td>
+                </tr>
+                <tr>
+                  <td>Linux</td>
+                  <td>20</td>
+                  <td>15/20</td>
+                  <td><span class="accuracy low">40%</span></td>
+                  <td>10 May</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+        </div>
+        <!-- ===== END DASHBOARD PAGE ===== -->
+
+        <!-- ===== MY PDFs PAGE ===== -->
+        <div id="mypdfsPage" class="page pdf-container" style="display: none">
+          <h2>My PDFs</h2>
+          <div class="topbar">
+            <div class="search">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input
+                type="text"
+                id="searchInput"
+                placeholder="Search PDFs..."
+              />
+            </div>
+          </div>
+          <div id="pdfList" class="pdf-list">
+            <!-- dynamic data yaha aayega -->
+          </div>
+        </div>
+        <!-- ===== END MY PDFs PAGE ===== -->
+
+        <!-- ===== QUIZZES & SUMMARIES PAGE ===== -->
+        <div id="quizSummaryPage" class="page" style="display: none">
+          <!-- tab buttons -->
+          <div class="qs-tabs">
+            <button
+              class="qs-tab active"
+              id="tabQuiz"
+              onclick="switchTab('quiz')"
+            >
+              My Quizzes
+            </button>
+            <button
+              class="qs-tab"
+              id="tabSummary"
+              onclick="switchTab('summary')"
+            >
+              My Summaries
+            </button>
+          </div>
+
+          <!-- Category filter chips — applies to both tabs -->
+          <div class="qs-category-bar">
+            <button class="qs-cat active" data-qscat="all">
+              <i class="fa-solid fa-layer-group"></i> All
+            </button>
+            <button class="qs-cat" data-qscat="University">
+              <i class="fa-solid fa-folder"></i> University
+            </button>
+            <button class="qs-cat" data-qscat="Personal">
+              <i class="fa-solid fa-folder"></i> Personal
+            </button>
+          </div>
+
+          <!-- quizzes tab content -->
+          <div id="quizTab">
+            <div class="quiz-topbar">
+              <input
+                type="text"
+                id="quizSearch"
+                placeholder="Search quizzes..."
+              />
+              <select id="quizFilter">
+                <option value="all">All Status</option>
+                <option value="completed">Completed</option>
+                <option value="pending">Not Attempted</option>
+              </select>
+            </div>
+
+            <div class="quiz-stats">
+              <div class="stats-top">
+                <div>
+                  <h3>Overall Quiz Performance</h3>
+                  <p>Your progress</p>
+                </div>
+              </div>
+              <div class="stats-grid">
+                <div class="stat blue">
+                  <h2 id="attempted">0</h2>
+                  <p>Attempted</p>
+                </div>
+                <div class="stat green">
+                  <h2 id="correct">0</h2>
+                  <p>Correct</p>
+                </div>
+                <div class="stat gray">
+                  <h2 id="unattempted">0</h2>
+                  <p>Unattempted</p>
+                </div>
+                <div class="stat purple">
+                  <h2 id="accuracy">0%</h2>
+                  <p>Accuracy</p>
+                </div>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+              </div>
+            </div>
+
+            <div id="quizList"></div>
+          </div>
+          <!-- end quizzes tab -->
+
+          <!-- summaries tab content -->
+          <div id="summaryTab" style="display: none">
+            <div class="summary-header">
+              <h2>My Summaries</h2>
+              <input
+                type="text"
+                id="summarySearch"
+                placeholder="Search summaries..."
+              />
+            </div>
+            <div id="summaryList"></div>
+          </div>
+          <!-- end summaries tab -->
+        </div>
+        <!-- ===== END QUIZZES & SUMMARIES PAGE ===== -->
+
+        <!-- ===== PROFILE PAGE ===== -->
+        <div id="ProfilePage" class="page" style="display: none">
+          <!-- Profile Header -->
+          <div class="profile-header">
+            <div class="avatar" id="profileAvatar">S</div>
+            <div class="profile-header-info">
+              <div class="profile-name-row">
+                <h2 id="profileName">Saba</h2>
+                <span class="rank-badge" id="profileRank">🌱 Novice</span>
+              </div>
+              <p class="profile-tagline">Learning consistently</p>
+              <p class="joined-date" id="profileJoined">Joined April 2026</p>
+              <!-- XP progress toward next level -->
+              <div class="xp-bar-wrap">
+                <div class="xp-bar-track">
+                  <div class="xp-bar-fill" id="xpProgressBar"></div>
+                </div>
+                <span class="xp-bar-label" id="xpProgressLabel"
+                  >0 / 100 XP to Learner</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Stats Overview Row -->
+          <div class="profile-stats-row">
+            <div class="profile-stat-card">
+              <div class="profile-stat-icon xp-icon">
+                <i class="fa-solid fa-bolt"></i>
+              </div>
+              <div>
+                <p class="profile-stat-label">Total XP</p>
+                <h3 class="profile-stat-value" id="totalXP">0 XP</h3>
+              </div>
+            </div>
+            <div class="profile-stat-card">
+              <div class="profile-stat-icon qs-icon">
+                <i class="fa-solid fa-circle-check"></i>
+              </div>
+              <div>
+                <p class="profile-stat-label">Questions Solved</p>
+                <h3 class="profile-stat-value" id="questionsSolved">0</h3>
+              </div>
+            </div>
+            <div class="profile-stat-card">
+              <div class="profile-stat-icon quiz-icon">
+                <i class="fa-solid fa-brain"></i>
+              </div>
+              <div>
+                <p class="profile-stat-label">Quizzes Done</p>
+                <h3 class="profile-stat-value" id="quizzesDone">0</h3>
+              </div>
+            </div>
+            <div class="profile-stat-card">
+              <div
+                class="profile-stat-icon"
+                style="background: linear-gradient(135deg, #ede9fe, #ddd6fe)"
+              >
+                <i class="fa-solid fa-bullseye" style="color: #7c3aed"></i>
+              </div>
+              <div>
+                <p class="profile-stat-label">Accuracy</p>
+                <h3 class="profile-stat-value" id="accuracyStat">—</h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Streak + Daily Goal Row -->
+          <div class="profile-mid-row">
+            <!-- Streak Card -->
+            <div class="profile-card streak-card">
+              <div class="streak-header">
+                <span class="streak-fire">🔥</span>
+                <div>
+                  <h4>Daily Streak</h4>
+                  <p class="streak-sub">Keep it going!</p>
+                </div>
+                <div class="streak-count" id="streakCount">0</div>
+              </div>
+              <div class="streak-days">
+                <div class="streak-day" data-day="Mon"><span>M</span></div>
+                <div class="streak-day" data-day="Tue"><span>T</span></div>
+                <div class="streak-day" data-day="Wed"><span>W</span></div>
+                <div class="streak-day" data-day="Thu"><span>T</span></div>
+                <div class="streak-day" data-day="Fri"><span>F</span></div>
+                <div class="streak-day" data-day="Sat"><span>S</span></div>
+                <div class="streak-day" data-day="Sun"><span>S</span></div>
+              </div>
+              <p class="streak-label-row">
+                <i
+                  class="fa-solid fa-calendar-days"
+                  style="color: #d97706; font-size: 0.75rem"
+                ></i>
+                &nbsp;Last 7 days
+              </p>
+            </div>
+
+            <!-- Daily Goal Card -->
+            <div class="profile-card goal-card">
+              <div class="goal-header">
+                <i class="fa-solid fa-bullseye" style="color: #d97706"></i>
+                <h4>Today's Goal</h4>
+              </div>
+              <p class="goal-sub">Complete <strong>2 quizzes</strong> today</p>
+              <div class="goal-progress-wrap">
+                <div class="goal-progress-bar">
+                  <div class="goal-progress-fill" id="goalFill"></div>
+                </div>
+                <span class="goal-progress-text" id="goalText">0 / 2</span>
+              </div>
+              <div class="goal-done-msg" id="goalDoneMsg" style="display: none">
+                <i class="fa-solid fa-party-horn"></i> Goal reached! Great work.
+              </div>
+            </div>
+          </div>
+
+          <!-- Subject Mastery -->
+          <div class="profile-card mastery-card">
+            <h4 class="mastery-title">
+              <i class="fa-solid fa-chart-simple" style="color: #d97706"></i>
+              Subject Mastery
+            </h4>
+            <p class="mastery-sub">Accuracy breakdown by category</p>
+            <div id="masteryBars" class="mastery-bars">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+
+          <!-- Best Performance -->
+          <div class="highlight" id="highlightBox"></div>
+
+          <!-- Badges Section -->
+          <div class="badges-section">
+            <h3 class="badges-title">🏅 Your Achievements</h3>
+            <div class="badges-grid">
+              <div class="badge locked" id="badge-first-quiz">
+                <span class="badge-lock"><i class="fa-solid fa-lock"></i></span>
+                <span class="badge-icon">🎯</span>
+                <p class="badge-name">First Step</p>
+                <p class="badge-desc">Complete your first quiz</p>
+              </div>
+              <div class="badge locked" id="badge-star">
+                <span class="badge-lock"><i class="fa-solid fa-lock"></i></span>
+                <span class="badge-icon">⭐</span>
+                <p class="badge-name">Star Performer</p>
+                <p class="badge-desc">Score 90%+ in any quiz</p>
+              </div>
+              <div class="badge locked" id="badge-bookworm">
+                <span class="badge-lock"><i class="fa-solid fa-lock"></i></span>
+                <span class="badge-icon">📚</span>
+                <p class="badge-name">Bookworm</p>
+                <p class="badge-desc">Upload 5 PDFs</p>
+              </div>
+              <div class="badge locked" id="badge-quiz-master">
+                <span class="badge-lock"><i class="fa-solid fa-lock"></i></span>
+                <span class="badge-icon">🏆</span>
+                <p class="badge-name">Quiz Master</p>
+                <p class="badge-desc">Complete 10 quizzes</p>
+              </div>
+              <div class="badge locked" id="badge-summary-king">
+                <span class="badge-lock"><i class="fa-solid fa-lock"></i></span>
+                <span class="badge-icon">💡</span>
+                <p class="badge-name">Summary King</p>
+                <p class="badge-desc">Generate 5 summaries</p>
+              </div>
+              <div class="badge locked" id="badge-scholar">
+                <span class="badge-lock"><i class="fa-solid fa-lock"></i></span>
+                <span class="badge-icon">🎓</span>
+                <p class="badge-name">Scholar</p>
+                <p class="badge-desc">Complete 20 quizzes</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ===== END PROFILE PAGE ===== -->
+      </main>
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <script src="../js/dashboard.js?v=1777760600"></script>
+  </body>
+</html>
