@@ -13,7 +13,7 @@ Deno.serve(async (req) => {
 
   try {
     const { text, title } = await req.json();
-    const OPENROUTER_KEY = Deno.env.get("OPENROUTER_API_KEY");
+    const OPENROUTER_KEY = Deno.env.get("OPENROUTER_API_KEY1");
 
     const MODELS = [
       "google/gemma-3-4b-it:free",

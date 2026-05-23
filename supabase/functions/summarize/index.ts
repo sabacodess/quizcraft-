@@ -14,7 +14,7 @@ Deno.serve(async (req) => {
   try {
     const { text, title } = await req.json();
 
-    const OPENROUTER_KEY = Deno.env.get("OPENROUTER_API_KEY");
+    const OPENROUTER_KEY = Deno.env.get("OPENROUTER_API_KEY1");
 
     const response = await fetch(
       "https://openrouter.ai/api/v1/chat/completions",
