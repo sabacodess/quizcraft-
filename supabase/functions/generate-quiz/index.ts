@@ -20,7 +20,7 @@ Deno.serve(async (req) => {
       // "mistralai/mistral-7b-instruct:free",
       // "meta-llama/llama-3.2-3b-instruct:free",
       // "qwen/qwen-2.5-7b-instruct:free",
-      // "google/gemma-3-12b-it:free",
+     "google/gemma-3-12b-it:free",
      "google/gemma-3-4b-it:free", 
      "meta-llama/llama-3.1-8b-instruct:free",
      "mistralai/mistral-7b-instruct:free",
