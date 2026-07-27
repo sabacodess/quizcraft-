@@ -232,7 +232,7 @@ const success = form.querySelector(".success-message");
 
 async function resetPassword(email) {
   const { error } = await supabaseClient.auth.resetPasswordForEmail(email, {
-    redirectTo: "http://192.168.1.43:5500/pages/reset-password.html",
+    redirectTo: "https://quizcraft-self.vercel.app/reset-password.html",
   });
 
   if (error) {
