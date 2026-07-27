@@ -16,15 +16,12 @@ Deno.serve(async (req) => {
     const OPENROUTER_KEY = Deno.env.get("OPENROUTER_API_KEY1");
 
     const MODELS = [
-      // "google/gemma-3-4b-it:free",
-      // "mistralai/mistral-7b-instruct:free",
-      // "meta-llama/llama-3.2-3b-instruct:free",
-      // "qwen/qwen-2.5-7b-instruct:free",
-     "google/gemma-3-12b-it:free",
-     "google/gemma-3-4b-it:free", 
-     "meta-llama/llama-3.1-8b-instruct:free",
-     "mistralai/mistral-7b-instruct:free",
-    "deepseek/deepseek-r1-0528:free",
+      s
+    //  "google/gemma-3-12b-it:free",
+    //  "google/gemma-3-4b-it:free", 
+    //  "meta-llama/llama-3.1-8b-instruct:free",
+    //  "mistralai/mistral-7b-instruct:free",
+    // "deepseek/deepseek-r1-0528:free",
     ];
 
     const prompt = `Generate exactly 10 multiple choice questions from this text.
